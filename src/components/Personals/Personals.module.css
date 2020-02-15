@@ -1,0 +1,17 @@
+.personList {
+  flex-wrap: wrap;
+  padding-left: 15px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid;
+}
+
+.append {
+  display: flex;
+  justify-content: flex-end;
+}
