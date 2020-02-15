@@ -63,6 +63,16 @@ class Personals extends Component {
               }}
               text="Email"
             />
+            <CommandBarButton
+              className={css.btnSort}
+              onClick={() => {
+                onSortText("cabinet");
+              }}
+              iconProps={{
+                iconName: sortStatus.name === "cabinet" ? sortStatusType : ""
+              }}
+              text="Кабинет"
+            />
           </div>
           <div className={css.append}>
             <PrimaryButton onClick={onAppend} text="Добавить"></PrimaryButton>
