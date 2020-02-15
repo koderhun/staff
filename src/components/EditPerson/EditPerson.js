@@ -9,18 +9,18 @@ import {
 } from "office-ui-fabric-react/lib/TextField";
 
 const personaData = {
-  firstName: "Фред",
-  lastName: "Пупкин",
-  position: "Повелитель снега",
-  phone: "8 934 232 34 45",
-  email: "pupkin.f@ya.ru",
-  cabinet: "34"
+  firstName: "Леонард",
+  lastName: "Хофстедтер",
+  position: "Физик-экспериментательщик",
+  phone: "8 934 232 34 44",
+  email: "leonard.f@ya.ru",
+  cabinet: "05"
 };
 
 class EditPerson extends Component {
   state = {
     ...personaData,
-    valid: false
+    valid: true
   };
 
   componentDidMount() {
@@ -70,7 +70,6 @@ class EditPerson extends Component {
   };
 
   onSave = () => {
-    console.log("Save");
     const { firstName, lastName, position, phone, email, cabinet } = this.state;
     const { personals, id, updateList } = this.props;
 

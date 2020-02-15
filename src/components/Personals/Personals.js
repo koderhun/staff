@@ -1,17 +1,7 @@
 import React, { Component } from "react";
 import css from "./Personals.module.css";
 import PersonalsItem from "../PersonalsItem/PersonalsItem";
-import {
-  CommandBarButton,
-  IContextualMenuProps,
-  IIconProps,
-  Stack,
-  IStackStyles,
-  PrimaryButton
-} from "office-ui-fabric-react";
-import { sortStatus } from "../../store/actions/personalsAction";
-
-// const addIcon: IIconProps = { iconName: "Add" };
+import { CommandBarButton, Stack, PrimaryButton } from "office-ui-fabric-react";
 
 class Personals extends Component {
   render() {

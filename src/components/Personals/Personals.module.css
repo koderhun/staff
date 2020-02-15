@@ -1,6 +1,6 @@
 .personList {
   flex-wrap: wrap;
-  padding-left: 15px;
+  margin-right: -15px;
 }
 
 .header {
@@ -18,4 +18,19 @@
 
 .btnSort {
   height: 30px;
+}
+
+@media (max-width: 768px) {
+  .personList {
+    margin-right: 0;
+  }
+
+  .header {
+    flex-direction: column-reverse;
+  }
+
+  .append {
+    margin-bottom: 10px;
+    justify-content: flex-start;
+  }
 }
