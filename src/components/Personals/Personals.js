@@ -31,11 +31,47 @@ class Personals extends Component {
         <div className={css.header}>
           <div className={css.filter}>
             <CommandBarButton
+              className={css.btnSort}
               onClick={() => {
                 onSortText("firstName");
               }}
-              iconProps={{ iconName: sortStatusType }}
+              iconProps={{
+                iconName: sortStatus.name === "firstName" ? sortStatusType : ""
+              }}
+              text="Имя"
+            />
+
+            <CommandBarButton
+              className={css.btnSort}
+              onClick={() => {
+                onSortText("lastName");
+              }}
+              iconProps={{
+                iconName: sortStatus.name === "lastName" ? sortStatusType : ""
+              }}
               text="Фамилия"
+            />
+
+            <CommandBarButton
+              className={css.btnSort}
+              onClick={() => {
+                onSortText("position");
+              }}
+              iconProps={{
+                iconName: sortStatus.name === "position" ? sortStatusType : ""
+              }}
+              text="Должность"
+            />
+
+            <CommandBarButton
+              className={css.btnSort}
+              onClick={() => {
+                onSortText("email");
+              }}
+              iconProps={{
+                iconName: sortStatus.name === "email" ? sortStatusType : ""
+              }}
+              text="Email"
             />
           </div>
           <div className={css.append}>
