@@ -20,7 +20,7 @@ class Personals extends Component {
       onEditItem,
       onDeleteItem,
       onAppend,
-      onSortFirstName,
+      onSortText,
       sortStatus
     } = this.props;
 
@@ -31,7 +31,9 @@ class Personals extends Component {
         <div className={css.header}>
           <div className={css.filter}>
             <CommandBarButton
-              onClick={onSortFirstName}
+              onClick={() => {
+                onSortText("firstName");
+              }}
               iconProps={{ iconName: sortStatusType }}
               text="Фамилия"
             />

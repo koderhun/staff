@@ -9,26 +9,6 @@ import {
 
 import { Modal } from "office-ui-fabric-react";
 
-function sortDown(a, b) {
-  const nameA = a.firstName.toLowerCase();
-  const nameB = b.firstName.toLowerCase();
-  if (nameA > nameB)
-    //сортируем строки по возрастанию
-    return -1;
-  if (nameA > nameB) return 1;
-  return 0; // Никакой сортировки
-}
-
-function sortUp(a, b) {
-  const nameA = a.firstName.toLowerCase();
-  const nameB = b.firstName.toLowerCase();
-  if (nameA < nameB)
-    //сортируем строки по возрастанию
-    return -1;
-  if (nameA > nameB) return 1;
-  return 0; // Никакой сортировки
-}
-
 class PersonalsContainer extends Component {
   state = {
     modalEditIsOpen: false,
@@ -56,18 +36,38 @@ class PersonalsContainer extends Component {
     this.props.updateList(newList);
   };
 
-  onSortFirstName = () => {
+  onSortText = key => {
     const { sortStatus, updateList, updateSortStatus } = this.props;
     const newList = [...this.props.list];
 
     if (sortStatus.type === "Down") {
-      newList.sort(sortUp);
+      newList.sort((a, b) => {
+        const nameA = a[key].toLowerCase();
+        const nameB = b[key].toLowerCase();
+        if (nameA < nameB)
+          //сортируем строки по возрастанию
+          return -1;
+        if (nameA > nameB) return 1;
+        return 0; // Никакой сортировки
+      });
+
       updateSortStatus({
+        name: key,
         type: "Up"
       });
     } else {
-      newList.sort(sortDown);
+      newList.sort((a, b) => {
+        const nameA = a[key].toLowerCase();
+        const nameB = b[key].toLowerCase();
+        if (nameA > nameB)
+          //сортируем строки по возрастанию
+          return -1;
+        if (nameA > nameB) return 1;
+        return 0; // Никакой сортировки
+      });
+
       updateSortStatus({
+        name: key,
         type: "Down"
       });
     }
@@ -96,7 +96,7 @@ class PersonalsContainer extends Component {
           onAppend={this.onAppend}
           onEditItem={this.onEditItem}
           onDeleteItem={this.onDeleteItem}
-          onSortFirstName={this.onSortFirstName}
+          onSortText={this.onSortText}
           sortStatus={sortStatus}
           list={list}
         />
