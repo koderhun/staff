@@ -9,17 +9,32 @@ import {
   IStackStyles,
   PrimaryButton
 } from "office-ui-fabric-react";
+import { sortStatus } from "../../store/actions/personalsAction";
 
 // const addIcon: IIconProps = { iconName: "Add" };
 
 class Personals extends Component {
   render() {
-    const { list, onEditItem, onDeleteItem, onAppend } = this.props;
+    const {
+      list,
+      onEditItem,
+      onDeleteItem,
+      onAppend,
+      onSortFirstName,
+      sortStatus
+    } = this.props;
+
+    const sortStatusType = sortStatus.type;
+
     return (
       <div>
         <div className={css.header}>
           <div className={css.filter}>
-            <CommandBarButton iconProps={{ iconName: "Down" }} text="Фамилия" />
+            <CommandBarButton
+              onClick={onSortFirstName}
+              iconProps={{ iconName: sortStatusType }}
+              text="Фамилия"
+            />
           </div>
           <div className={css.append}>
             <PrimaryButton onClick={onAppend} text="Добавить"></PrimaryButton>

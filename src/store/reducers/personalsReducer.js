@@ -1,4 +1,4 @@
-import { updateList } from "../actions/personalsAction";
+import { updateList, updateSortStatus } from "../actions/personalsAction";
 
 export const initialState = {
   list: [
@@ -26,7 +26,11 @@ export const initialState = {
       email: "krist.k@ya.ru",
       cabinet: "53"
     }
-  ]
+  ],
+  sortStatus: {
+    name: "firstName",
+    type: "Down"
+  }
 };
 
 export default (state = initialState, action) => {
@@ -35,6 +39,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         list: [...action.payload]
+      };
+
+    case updateSortStatus().type:
+      return {
+        ...state,
+        sortStatus: {
+          ...action.payload
+        }
       };
 
     default:

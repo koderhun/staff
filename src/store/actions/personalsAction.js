@@ -4,3 +4,10 @@ export const updateList = list => {
     payload: list
   };
 };
+
+export const updateSortStatus = status => {
+  return {
+    type: "SORT_STATUS",
+    payload: status
+  };
+};
