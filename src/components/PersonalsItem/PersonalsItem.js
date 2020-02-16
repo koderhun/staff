@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Persona, PersonaSize } from "office-ui-fabric-react/lib/Persona";
 import { Text } from "office-ui-fabric-react/lib/Text";
+import { Link } from "office-ui-fabric-react/lib/Link";
 import { Card } from "@uifabric/react-cards";
 import { FontIcon } from "office-ui-fabric-react/lib/Icon";
 import css from "./PersonalsItem.module.css";
@@ -31,8 +32,18 @@ class PersonalsItem extends Component {
             </div>
 
             <div className={css.info}>
-              <Text className={css.phone}>Телефон: {phone}</Text>
-              <Text className={css.email}>Email: {email}</Text>
+              <Text className={css.phone}>
+                Телефон:
+                <Link className={css.link} href={"tel:" + phone}>
+                  {phone}
+                </Link>
+              </Text>
+              <Text className={css.email}>
+                Email:
+                <Link className={css.link} href={"mailto:" + email}>
+                  {email}
+                </Link>
+              </Text>
               <Text className={css.cabinet}>Кабинет: {cabinet}</Text>
             </div>
           </div>
