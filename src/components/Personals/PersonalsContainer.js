@@ -7,7 +7,7 @@ import {
   updateList,
   updateSortStatus
 } from "../../store/actions/personalsAction";
-import { IconButton, Modal } from "office-ui-fabric-react";
+import { Modal } from "office-ui-fabric-react";
 
 class PersonalsContainer extends Component {
   state = {
