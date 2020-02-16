@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateList } from "../../store/actions/personalsAction";
 import css from "./EditPerson.module.css";
-import { DefaultButton, PrimaryButton } from "office-ui-fabric-react";
+import { DefaultButton, PrimaryButton, FontIcon } from "office-ui-fabric-react";
 import {
   TextField,
   MaskedTextField
@@ -103,7 +103,10 @@ class EditPerson extends Component {
 
     return (
       <div className={css.form}>
-        <h2 className={css.header}>Редактирование профиля сотрудника</h2>
+        <h2 className={css.header}>
+          Редактирование профиля сотрудника
+          <FontIcon onClick={onClose} iconName="cancel" className={css.close} />
+        </h2>
         <div className={css.inputs}>
           <TextField
             onChange={e => {

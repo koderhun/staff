@@ -2,15 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Personals from "./Personals";
 import EditPerson from "../EditPerson/EditPerson";
+import Dialog from "../DialogModal/DialogModal";
 import {
   updateList,
   updateSortStatus
 } from "../../store/actions/personalsAction";
-
-import { Modal } from "office-ui-fabric-react";
+import { IconButton, Modal } from "office-ui-fabric-react";
 
 class PersonalsContainer extends Component {
   state = {
+    modalDeleteIsOpen: false,
     modalEditIsOpen: false,
     editId: null
   };
@@ -29,7 +30,20 @@ class PersonalsContainer extends Component {
     this.openModal();
   };
 
-  onDeleteItem = id => {
+  onOpenDeleteModal = id => {
+    this.setState({
+      editId: id,
+      modalDeleteIsOpen: true
+    });
+  };
+
+  onCloseDeleteModal = () => {
+    this.setState({
+      modalDeleteIsOpen: false
+    });
+  };
+
+  deleteItem = id => {
     let newList = [...this.props.list];
 
     newList.splice(id, 1);
@@ -87,7 +101,7 @@ class PersonalsContainer extends Component {
   };
 
   render() {
-    const { editId } = this.state;
+    const { editId, modalEditIsOpen, modalDeleteIsOpen } = this.state;
     const { list, sortStatus } = this.props;
 
     return (
@@ -95,18 +109,25 @@ class PersonalsContainer extends Component {
         <Personals
           onAppend={this.onAppend}
           onEditItem={this.onEditItem}
-          onDeleteItem={this.onDeleteItem}
+          onDeleteItem={this.onOpenDeleteModal}
           onSortText={this.onSortText}
           sortStatus={sortStatus}
           list={list}
         />
         <Modal
           onDismiss={this.closeModal}
-          isOpen={this.state.modalEditIsOpen}
+          isOpen={modalEditIsOpen}
           isBlocking={false}
         >
           <EditPerson onClose={this.closeModal} id={editId}></EditPerson>
         </Modal>
+        {modalDeleteIsOpen ? (
+          <Dialog
+            id={editId}
+            deleteItem={this.deleteItem}
+            closeModal={this.onCloseDeleteModal}
+          ></Dialog>
+        ) : null}
       </div>
     );
   }
